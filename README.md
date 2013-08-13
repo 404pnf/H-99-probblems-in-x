@@ -3,13 +3,21 @@ http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems
 
 都能解决了。初级修炼也就完成了。
 
+# 运行测试
+
+直接在目录运行 rake 就默认运行所有测试了。
+
+## 欢迎参与
+
 最终目标是我个人能用3种语言解决这些问题。ruby, scheme, haskell。
 
 yp快来参与，语言不限。
 
 格式： 把文件按 id.lang_suffix 就可以了。 比如 03.rb, 03,hs, 03.scm, 03.js, 03.py
 
-解题可以偷懒。比如第一题 
+## 解题可以偷懒。
+
+比如第一题 
 
 (*) Find the last element of a
 
