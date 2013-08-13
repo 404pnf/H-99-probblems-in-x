@@ -29,12 +29,12 @@ end
 
 require 'test/unit'
 class TestMy < Test::Unit::TestCase
-  def test_reverse1
+  def test_panlindrom
     assert_equal true, palindrome("madamimadam")
     assert_equal false, palindrome([1,2,3])
     assert_equal true, palindrome([1,2,4,8,16,8,4,2,1])
   end
-  def test_reverse2
+  def test_palindrome2
     assert_equal true, palindrome2("madamimadam")
     assert_equal false, palindrome2([1,2,3])
     assert_equal true, palindrome2([1,2,4,8,16,8,4,2,1])
