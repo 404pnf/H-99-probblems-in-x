@@ -18,18 +18,15 @@ def reverse1 coll
   coll.reverse
 end
 
-
-# 如果用递归，因为ruby的sting没有pop，且拼出来的结果默认是array
-# 因此没有方法写一个通用的
-=begin
-def reverse2 coll
-  if coll.empty?
-    []
-  else
-    [coll[-1]].concat (reverse2 (but_last coll))
-  end
-end 
-=end #错误的，因为结果是array，如果输入是string的话，就不对
+# 比较好的方法
+def reverse3 coll
+    if coll.empty?
+      coll.is_a?(String) ? '' : []
+    else
+      item = coll.is_a?(String) ? coll[-1] : [coll[-1]] 
+      item + reverse3(but_last coll)
+    end
+end      
 
 def reverse2 coll
   if coll.is_a? String
@@ -46,7 +43,6 @@ def reverse2 coll
     end
   end
 end
-      
 
 require 'test/unit'
 class TestMy < Test::Unit::TestCase
@@ -57,5 +53,9 @@ class TestMy < Test::Unit::TestCase
   def test_reverse2
    assert_equal [4,3,2,1], reverse2([1,2,3,4])
    assert_equal "!amanap ,lanac a ,nalp a ,nam A", reverse2("A man, a plan, a canal, panama!") 
+  end
+  def test_reverse3
+   assert_equal [4,3,2,1], reverse3([1,2,3,4])
+   assert_equal "!amanap ,lanac a ,nalp a ,nam A", reverse3("A man, a plan, a canal, panama!") 
   end
 end
