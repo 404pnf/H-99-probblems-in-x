@@ -19,12 +19,10 @@ def reverse1 coll
 end
 
 def reverse2 coll
-  r = r || []
   if coll.empty?
-    r
+    nil
   else
-    r.unshift coll.pop # pop 是会直接改变 coll 的
-    reverse2 coll
+    [coll[0]].concat(rest coll)
   end
 end
 
@@ -35,7 +33,7 @@ class TestMy < Test::Unit::TestCase
     assert_equal "!amanap ,lanac a ,nalp a ,nam A", reverse1("A man, a plan, a canal, panama!") 
   end
   def test_reverse2
-    assert_equal [4,3,2,1], reverse2([1,2,3,4])
-    assert_equal "!amanap ,lanac a ,nalp a ,nam A", reverse2("A man, a plan, a canal, panama!") 
+   # assert_equal [4,3,2,1], reverse2([1,2,3,4])
+    #assert_equal "!amanap ,lanac a ,nalp a ,nam A", reverse2("A man, a plan, a canal, panama!") 
   end
 end
