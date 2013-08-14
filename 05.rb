@@ -18,6 +18,20 @@ def reverse1 coll
   coll.reverse
 end
 
+# 这个方法的测试不考虑String了 太麻烦了！
+def reverse5 coll
+  coll.reverse_each.reduce([]) { |s, i| s << i}
+end
+
+# 这个方法的测试不考虑String了 太麻烦了！
+def reverse6 coll
+  if coll.empty?
+    []
+  else
+    coll.last+ reverse6(coll.drop 1)
+  end
+end
+
 # 更好的方法？
 def reverse4 coll
   if coll.is_a? String
@@ -74,5 +88,11 @@ class TestMy < Test::Unit::TestCase
   def test_reverse4
    assert_equal [4,3,2,1], reverse4([1,2,3,4])
    assert_equal "!amanap ,lanac a ,nalp a ,nam A", reverse4("A man, a plan, a canal, panama!") 
+  end
+  def test_reverse5
+   assert_equal [4,3,2,1], reverse5([1,2,3,4])
+  end
+  def test_reverse6
+   assert_equal [4,3,2,1], reverse6([1,2,3,4])
   end
 end
