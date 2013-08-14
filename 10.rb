@@ -11,8 +11,6 @@ Example in Haskell:
 encode "aaaabccaadeeee"
 [(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]
 Solutions
-
-
 =end
 
 def pack arr

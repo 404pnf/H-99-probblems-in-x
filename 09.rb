@@ -13,18 +13,76 @@ Example in Haskell:
 ["aaaa","b","cc","aa","d","eeee"]
 =end
 
+=begin
+# 这里有个答案
+# http://www.perlmonks.org/?node_id=632023
+# Ruby
+
+This was discussed at length on the Ruby-Talk mailing list, with many different solutions offered. My favourite is similar to tye's Perl solution:
+
+s = "ZBBBCZZ"
+x = []
+s.scan(/((.)\2*)/){x.push [$~[0]]}
+=end
+
+=begin
+haskell的方法
+-- > group "Mississippi" = ["M","i","ss","i","ss","i","pp","i"]
+--
+-- It is a special case of 'groupBy', which allows the programmer to supply
+-- their own equality test.
+group                   :: Eq a => [a] -> [[a]]
+group                   =  groupBy (==)
+
+-- | The 'groupBy' function is the non-overloaded version of 'group'.
+groupBy                 :: (a -> a -> Bool) -> [a] -> [[a]]
+groupBy _  []           =  []
+groupBy eq (x:xs)       =  (x:ys) : groupBy eq zs
+                           where (ys,zs) = span (eq x) xs
+=end
+
+
+=begin
+该题提供的solution之一
+A simple solution:
+
+pack :: (Eq a) => [a] -> [[a]]
+pack [] = []
+pack [x] = [[x]]
+pack (x:xs) = if x `elem` (head (pack xs))
+              then (x:(head (pack xs))):(tail (pack xs))
+              else [x]:(pack xs)
+=end
+
+# 竟然这个开始写的方法是对的
+# 且我没有能力实现上面我参考其它答案的写法
+
 def pack arr
   r = [[]]
   arr.each do |x|
     if r.last.include? x 
-       # 不能处理 nil [nil,nil,1,2]
        r.last << x
     else
        r << [x]
     end
+    p r
   end
   r.delete_if { |i| i == []}
 end
+# 下面这个应该看看
+=begin
+# 那个ruby字符串用scan的是对的，但根本明白一丝
+# 主要不明白 \2* 哪里来的
+2.0.0dev :022 > 'abbc'.scan(/((.))/)
+ => [["a", "a"], ["b", "b"], ["b", "b"], ["c", "c"]]
+2.0.0dev :023 > 'abbc'.scan(/((.)\2)/)
+ => [["bb", "b"]]
+2.0.0dev :024 > 'abbc'.scan(/((.)\2*)/)
+ => [["a", "a"], ["bb", "b"], ["c", "c"]]
+2.0.0dev :025 > 'abbc'.scan(/((.)\2*)/).map {|i, _| i}
+ => ["a", "bb", "c"]
+2.0.0dev :026 >
+=end 
 
 # 那个对于字符串的我没有做
 # 因为觉得和ruby不是太有关系
