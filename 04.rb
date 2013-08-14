@@ -18,6 +18,7 @@ def my_length coll
   coll.size
 end
 
+# 递归喽
 def my_length_recur coll
   if coll.empty?
     0
@@ -26,6 +27,10 @@ def my_length_recur coll
   end
 end
 
+# 先将所有元素都变成1，然后求和就可以了
+def my_length_foldl coll
+  coll.map {|i| 1}.reduce(:+)
+end
 
 require 'test/unit'
 class TestMyLast < Test::Unit::TestCase
