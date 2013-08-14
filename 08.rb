@@ -16,8 +16,12 @@ Example in Haskell:
 
 def compress_do arr
   r = []
-  arr.each do |x|
-    r << x if r.last != x # 竟然这么简单
+  if arr.empty? # 没有这个的话 compress_do [] 结果会是 [[]]
+    []
+  else
+    arr.each do |x|
+      r << x if r.last != x # 竟然这么简单
+    end
   end
   r
 end
