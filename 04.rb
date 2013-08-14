@@ -28,8 +28,13 @@ def my_length_recur coll
 end
 
 # 先将所有元素都变成1，然后求和就可以了
+# 对字符串无效
 def my_length_foldl coll
-  coll.map {|i| 1}.reduce(:+)
+  if coll.is_a? String
+    coll.split(//).map {|i| 1}.reduce(:+)
+  else
+    coll.map {|i| 1}.reduce(:+)
+  end
 end
 
 require 'test/unit'
@@ -41,5 +46,9 @@ class TestMyLast < Test::Unit::TestCase
   def test_my_length_recur
     assert_equal 3, my_length_recur([123, 456, 789])
     assert_equal 13, my_length_recur("Hello, world!") 
+  end
+  def test_my_length_foldl
+    assert_equal 3, my_length_foldl([123, 456, 789])
+    assert_equal 13, my_length_foldl("Hello, world!") 
   end
 end
