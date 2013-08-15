@@ -28,8 +28,13 @@ def reverse6 coll
   if coll.empty?
     []
   else
-    coll.last+ reverse6(coll.drop 1)
+    h, *t = coll
+    reverse6(t).push h
   end
+end
+
+def reverse7 coll
+  coll.reduce([]) {|r, i| r.unshift i ; r}
 end
 
 # 更好的方法？
@@ -94,5 +99,8 @@ class TestMy < Test::Unit::TestCase
   end
   def test_reverse6
    assert_equal [4,3,2,1], reverse6([1,2,3,4])
+  end
+  def test_reverse7
+   assert_equal [4,3,2,1], reverse7([1,2,3,4])
   end
 end

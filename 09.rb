@@ -65,9 +65,10 @@ def pack arr
     else
        r << [x]
     end
-    p r
+    #p r
   end
-  r.delete_if { |i| i == []}
+  r.drop 1 # 第一个元素是开始我们放入的那个[]，在[[]]中
+  #r.delete_if { |i| i == []}
 end
 # 下面这个应该看看
 =begin
