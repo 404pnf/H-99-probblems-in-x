@@ -1,0 +1,26 @@
+
+SpaceAfterComma:
+  Description: 'Use spaces after commas.'
+  Enabled: false
+  
+DefWithParentheses:
+  Description: 'Use def with parentheses when there are arguments.'
+  Enabled: false
+
+DefWithoutParentheses:
+  Description: >
+                 Omit the parentheses when the method doesn't accept
+                 any arguments.
+  Enabled: false
+
+AsciiComments:
+  Description: 'Use only ascii symbols in comments.'
+  Enabled: false
+
+BlockComments:
+  Description: 'Do not use block comments.'
+  Enabled: false
+
+Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false

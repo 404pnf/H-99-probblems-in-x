@@ -1,0 +1,13 @@
+SpaceAfterComma:
+  Description: 'Use spaces after commas.'
+  Enabled: false
+  
+DefWithParentheses:
+  Description: 'Use def with parentheses when there are arguments.'
+  Enabled: false
+  
+AsciiComments:
+  Description: 'Use only ascii symbols in comments.'
+  Enabled: false
+
+  
